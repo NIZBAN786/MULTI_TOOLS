@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QR Code Generator</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Cyberpunk theme styling */
+        :root {
+            --neon-orange: #ff6b35;
+            --cyber-purple: #8a4fff;
+            --dark-matte: #1a1a1a;
+            --holographic: linear-gradient(45deg, var(--neon-orange), var(--cyber-purple));
+        }
+
+        body {
+            font-family: 'Space Grotesk', sans-serif;
+            background: var(--dark-matte);
+            color: #e0e0e0;
+            min-height: 100vh;
+        }
+
+        .cyber-border {
+            border: 2px solid;
+            border-image: var(--holographic) 1;
+            position: relative;
+        }
+
+        .cyber-border::after {
+            content: '';
+            position: absolute;
+            inset: -3px;
+            background: var(--holographic);
+            z-index: -1;
+            filter: blur(10px);
+            opacity: 0.3;
+        }
+
+        .holographic-text {
+            background: var(--holographic);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .pixel-grid {
+            background-image: 
+                linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+            background-size: 20px 20px;
+        }
+
+        .neon-button {
+            background: var(--holographic);
+            color: white;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .neon-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 0 15px var(--neon-orange);
+        }
+
+        .input-field {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: white;
+            padding: 0.75rem;
+            width: 100%;
+            transition: border-color 0.3s;
+        }
+
+        .input-field:focus {
+            border-color: var(--neon-orange);
+            outline: none;
+        }
+    </style>
+</head>
+
+<body class="pixel-grid">
+    <nav class="sticky top-0 bg-black/80 backdrop-blur-xl border-b border-white/10 z-50">
+        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+            <a href="/" class="text-2xl font-bold holographic-text">QR Code Generator</a>
+            <div class="flex space-x-6">
+                <a href="/profile" class="hover:text-cyber-purple transition-colors group">
+                    <span class="mr-2">👾</span>
+                    <span class="border-b-2 border-transparent group-hover:border-neon-orange">Profile</span>
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="container mx-auto px-4 py-12">
+        <h1 class="text-5xl font-bold text-center mb-12 holographic-text">
+            QR Code Generator
+        </h1>
+
+        <div class="max-w-2xl mx-auto cyber-border bg-black/50 p-8 hover:bg-black/60 transition-all">
+            <form method="POST" class="space-y-6">
+                <div>
+                    <label for="data" class="block text-lg font-medium mb-2">Enter text or URL:</label>
+                    <input type="text" id="data" name="data" required class="input-field">
+                </div>
+                <button type="submit" class="neon-button w-full">
+                    Generate QR Code
+                </button>
+            </form>
+
+            {% if qr_code_img %}
+                <div class="mt-8 text-center">
+                    <h2 class="text-3xl font-bold mb-4 holographic-text">Generated QR Code:</h2>
+                    <img id="qrCodeImage" src="{{ qr_code_img }}" alt="QR Code" class="mx-auto cyber-border p-2">
+                    <br>
+                    <a href="{{ qr_code_img }}" download="qr_code.png" class="inline-block mt-4">
+                        <button type="button" class="neon-button">
+                            Download QR Code
+                        </button>
+                    </a>
+                    <button type="button" class="neon-button mt-4" onclick="copyImageToClipboard()">
+                        Copy to Clipboard
+                    </button>
+                </div>
+            {% endif %}
+        </div>
+    </main>
+    <script>
+        async function copyImageToClipboard() {
+            const img = document.getElementById('qrCodeImage');
+            const response = await fetch(img.src);
+            const blob = await response.blob();
+            const item = new ClipboardItem({ 'image/png': blob });
+            await navigator.clipboard.write([item]);
+           // alert('QR Code copied to clipboard!');
+        }
+    </script>
+</body>
+</html>

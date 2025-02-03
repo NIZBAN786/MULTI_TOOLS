@@ -1,0 +1,27 @@
+<svg width="200" height="200" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="200" height="200" fill=""/>
+  <defs>
+    <linearGradient id="holographicGradient" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#ff6b35" />
+      <stop offset="100%" stop-color="#8a4fff" />
+    </linearGradient>
+    <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="4" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+  <circle cx="100" cy="100" r="80" stroke="url(#holographicGradient)" stroke-width="10" fill="none" filter="url(#glow)" opacity="0.3">
+    <animate attributeName="opacity" values="0.3;1;0.3" dur="2s" repeatCount="indefinite"/>
+    <animate attributeName="r" values="80;85;80" dur="3s" repeatCount="indefinite"/>
+  </circle>
+  <text x="50%" y="55%" text-anchor="middle" fill="black" font-size="40" font-family="'Space Grotesk', sans-serif" font-weight="600">
+    MT
+  </text>
+  <circle cx="100" cy="100" r="70" stroke="url(#holographicGradient)" stroke-width="5" fill="none" opacity="0.5">
+    <animate attributeName="r" values="70;75;70" dur="2.5s" repeatCount="indefinite"/>
+    <animate attributeName="opacity" values="0.5;0.8;0.5" dur="2s" repeatCount="indefinite"/>
+  </circle>
+</svg>
