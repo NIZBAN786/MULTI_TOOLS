@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="icon" href="{{ url_for('static', filename='favicon.svg') }}" type="image/svg+xml">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body class="pixel-grid min-h-screen flex items-center justify-center">
+    <div class="w-full max-w-md px-6 py-8 cyber-border bg-black/50 rounded-lg">
+        <h1 class="text-4xl font-extrabold text-center holographic-text mb-8">Register</h1>
+        <form action="/register" method="post" class="space-y-6">
+            <div>
+                <label for="username" class="block text-sm font-medium text-cyber-purple">Username</label>
+                <input type="text" name="username" id="username" 
+                       class="mt-1 w-full p-3 bg-black/30 text-white border border-white/20 rounded-lg" 
+                       placeholder="Choose a username" required>
+            </div>
+            <div>
+                <label for="email" class="block text-sm font-medium text-cyber-purple">Email</label>
+                <input type="email" name="email" id="email" 
+                       class="mt-1 w-full p-3 bg-black/30 text-white border border-white/20 rounded-lg" 
+                       placeholder="Enter your email" required>
+            </div>
+            <div>
+                <label for="password" class="block text-sm font-medium text-cyber-purple">Password</label>
+                <input type="password" name="password" id="password" 
+                       class="mt-1 w-full p-3 bg-black/30 text-white border border-white/20 rounded-lg" 
+                       placeholder="Create a password" required>
+            </div>
+            <button type="submit" class="w-full py-3 bg-cyber-purple/30 hover:bg-cyber-purple/40 text-neon-orange font-mono transition-all rounded-lg">
+                REGISTER >>
+            </button>
+            <div class="text-center">
+                <a href="/login" class="text-neon-orange hover:text-cyber-purple transition-colors mt-4 text-sm">Already have an account? Login</a>
+            </div>
+            {% if error %}
+            <div class="text-neon-orange text-center mt-4 animate-pulse">{{ error }}</div>
+            {% endif %}
+        </form>
+    </div>
+</body>
+
+</html>

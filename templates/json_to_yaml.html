@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JSON ↔ YAML Converter - MultiTools</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="icon" href="{{ url_for('static', filename='favicon.svg') }}" type="image/svg+xml">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body class="pixel-grid">
+    <nav class="sticky top-0 bg-black/80 backdrop-blur-xl border-b border-white/10 z-50">
+        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+            <a href="/" class="text-2xl font-bold holographic-text">MultiTools</a>
+            <div class="flex space-x-6">
+                <a href="/profile" class="hover:text-cyber-purple transition-colors group">
+                    <span class="mr-2">👾</span>
+                    <span class="border-b-2 border-transparent group-hover:border-neon-orange">Profile</span>
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="container mx-auto px-4 py-12 max-w-3xl">
+        <h1 class="text-4xl font-bold mb-8 holographic-text text-center">
+            JSON ↔ YAML Converter
+        </h1>
+
+        <!-- JSON to YAML Form -->
+        <form method="post" class="cyber-border bg-black/50 p-6 mb-8">
+            <div class="space-y-6">
+                <div>
+                    <label for="json_data" class="block text-lg mb-3 font-mono text-cyber-purple">JSON Input</label>
+                    <textarea 
+                        id="json_data" 
+                        name="json_data" 
+                        rows="10" 
+                        class="w-full bg-black/30 border border-white/10 p-4 font-mono text-sm focus:outline-none focus:border-cyber-purple/50 resize-none"
+                        placeholder='{"example": "Enter your JSON here..."}'>{{ request.form.get('json_data', '') }}</textarea>
+                </div>
+                <button 
+                    type="submit" 
+                    class="w-full py-3 bg-cyber-purple/30 hover:bg-cyber-purple/40 text-neon-orange font-mono transition-all border border-cyber-purple/50 hover:border-cyber-purple/80">
+                    CONVERT TO YAML >>
+                </button>
+            </div>
+        </form>
+
+        <!-- YAML Output -->
+        {% if yaml_data %}
+        <div class="cyber-border bg-black/50 p-6 mb-8">
+            <div class="flex justify-between items-center mb-4">
+                <h2 class="text-xl font-mono text-neon-orange">YAML Output</h2>
+                <div class="flex space-x-3">
+                    <button 
+                        onclick="copyToClipboard('yaml_output')"
+                        class="px-4 py-2 bg-cyber-purple/30 hover:bg-cyber-purple/40 text-sm font-mono transition-all">
+                        COPY
+                    </button>
+                    <button 
+                        onclick="downloadFile('yaml_output', 'output.yaml')"
+                        class="px-4 py-2 bg-neon-orange/30 hover:bg-neon-orange/40 text-sm font-mono transition-all">
+                        DOWNLOAD
+                    </button>
+                </div>
+            </div>
+            <pre id="yaml_output" class="bg-black/30 p-4 overflow-x-auto text-sm font-mono">{{ yaml_data }}</pre>
+        </div>
+        {% endif %}
+
+        <!-- YAML to JSON Form -->
+        <form method="post" class="cyber-border bg-black/50 p-6 mb-8">
+            <div class="space-y-6">
+                <div>
+                    <label for="yaml_data" class="block text-lg mb-3 font-mono text-cyber-purple">YAML Input</label>
+                    <textarea 
+                        id="yaml_data" 
+                        name="yaml_data" 
+                        rows="10" 
+                        class="w-full bg-black/30 border border-white/10 p-4 font-mono text-sm focus:outline-none focus:border-cyber-purple/50 resize-none"
+                        placeholder='example: Enter your YAML here...'>{{ request.form.get('yaml_data', '') }}</textarea>
+                </div>
+                <button 
+                    type="submit" 
+                    class="w-full py-3 bg-cyber-purple/30 hover:bg-cyber-purple/40 text-neon-orange font-mono transition-all border border-cyber-purple/50 hover:border-cyber-purple/80">
+                    CONVERT TO JSON >>
+                </button>
+            </div>
+        </form>
+
+        <!-- JSON Output -->
+        {% if json_data %}
+        <div class="cyber-border bg-black/50 p-6 mb-8">
+            <div class="flex justify-between items-center mb-4">
+                <h2 class="text-xl font-mono text-neon-orange">JSON Output</h2>
+                <div class="flex space-x-3">
+                    <button 
+                        onclick="copyToClipboard('json_output')"
+                        class="px-4 py-2 bg-cyber-purple/30 hover:bg-cyber-purple/40 text-sm font-mono transition-all">
+                        COPY
+                    </button>
+                    <button 
+                        onclick="downloadFile('json_output', 'output.json')"
+                        class="px-4 py-2 bg-neon-orange/30 hover:bg-neon-orange/40 text-sm font-mono transition-all">
+                        DOWNLOAD
+                    </button>
+                </div>
+            </div>
+            <pre id="json_output" class="bg-black/30 p-4 overflow-x-auto text-sm font-mono">{{ json_data }}</pre>
+        </div>
+        {% endif %}
+
+        <!-- Error Handling -->
+        {% if error %}
+        <div class="cyber-border bg-red-900/20 p-6 border-red-500/50">
+            <h2 class="text-xl font-mono text-red-400 mb-2">Conversion Error</h2>
+            <pre class="text-red-300 font-mono text-sm">{{ error }}</pre>
+        </div>
+        {% endif %}
+    </main>
+
+    <script>
+        function copyToClipboard(elementId) {
+            const output = document.getElementById(elementId).innerText;
+            navigator.clipboard.writeText(output).then(() => {
+                alert('Copied to clipboard');
+            }).catch(err => {
+                alert('Failed to copy: ', err);
+            });
+        }
+
+        function downloadFile(elementId, filename) {
+            const output = document.getElementById(elementId).innerText;
+            const blob = new Blob([output], { type: 'application/octet-stream' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = filename;
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+        }
+    </script>
+</body>
+</html>

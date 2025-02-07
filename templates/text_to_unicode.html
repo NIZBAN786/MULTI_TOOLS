@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MultiTools - Text to Unicode</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="icon" href="{{ url_for('static', filename='favicon.svg') }}" type="image/svg+xml">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body class="pixel-grid">
+    <nav class="sticky top-0 bg-black/80 backdrop-blur-xl border-b border-white/10 z-50">
+        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+            <a href="/" class="text-2xl font-bold holographic-text">MultiTools</a>
+            <div class="flex space-x-6">
+                <a href="/profile" class="hover:text-cyber-purple transition-colors group">
+                    <span class="mr-2">👾</span>
+                    <span class="border-b-2 border-transparent group-hover:border-neon-orange">Profile</span>
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="container mx-auto px-4 py-12">
+        <h1 class="text-5xl font-bold text-center mb-12 holographic-text">
+            Text ↔ Unicode Converter
+        </h1>
+
+        <section class="cyber-border bg-black/50 p-8 mb-12 space-y-6 hover:bg-black/60 transition-all">
+            <!-- Text to Unicode Form -->
+            <form method="POST" action="{{ url_for('text_to_unicode') }}" class="space-y-4">
+                <input type="hidden" name="action" value="text_to_unicode">
+                <div>
+                    <label for="text" class="block text-cyber-purple font-bold mb-2">Enter Text:</label>
+                    <input type="text" id="text" name="text" class="w-full p-3 bg-white/10 border border-white/20 focus:border-cyber-purple focus:ring-cyber-purple outline-none" placeholder="Enter text to convert to Unicode">
+                </div>
+                <button type="submit" class="w-full py-3 bg-cyber-purple/30 hover:bg-cyber-purple/40 text-neon-orange font-mono transition-all">
+                    Convert Text to Unicode
+                </button>
+            </form>
+
+            <!-- Unicode to Text Form -->
+            <form method="POST" action="{{ url_for('text_to_unicode') }}" class="space-y-4">
+                <input type="hidden" name="action" value="unicode_to_text">
+                <div>
+                    <label for="unicode_input" class="block text-cyber-purple font-bold mb-2">Enter Unicode:</label>
+                    <input type="text" id="unicode_input" name="unicode_input" class="w-full p-3 bg-white/10 border border-white/20 focus:border-cyber-purple focus:ring-cyber-purple outline-none" placeholder="Enter Unicode (e.g., U+0041 U+0042)">
+                </div>
+                <button type="submit" class="w-full py-3 bg-neon-orange/30 hover:bg-neon-orange/40 text-cyber-purple font-mono transition-all">
+                    Convert Unicode to Text
+                </button>
+            </form>
+
+            <!-- Results Display -->
+            {% if unicode_result %}
+            <div class="pt-6 border-t border-white/10">
+                <h2 class="text-3xl font-bold mb-6 holographic-text">Unicode Result:</h2>
+                <div class="flex items-center justify-between bg-white/5 p-4 rounded-lg">
+                    <p id="unicode-result" class="text-neon-orange font-mono break-words flex-grow">{{ unicode_result }}</p>
+                    <button onclick="copyToClipboard('unicode-result')" class="ml-4 p-2 bg-cyber-purple/30 hover:bg-cyber-purple/40 text-neon-orange font-mono transition-all">
+                        📋 Copy
+                    </button>
+                </div>
+            </div>
+            {% endif %}
+
+            {% if text_result %}
+            <div class="pt-6 border-t border-white/10">
+                <h2 class="text-3xl font-bold mb-6 holographic-text">Text Result:</h2>
+                <div class="flex items-center justify-between bg-white/5 p-4 rounded-lg">
+                    <p id="text-result" class="text-neon-orange font-mono break-words flex-grow">{{ text_result }}</p>
+                    <button onclick="copyToClipboard('text-result')" class="ml-4 p-2 bg-cyber-purple/30 hover:bg-cyber-purple/40 text-neon-orange font-mono transition-all">
+                        📋 Copy
+                    </button>
+                </div>
+            </div>
+            {% endif %}
+
+            <!-- Flash Messages -->
+            {% with messages = get_flashed_messages() %}
+                {% if messages %}
+                <div class="pt-6 border-t border-white/10">
+                    <ul class="space-y-2">
+                        {% for message in messages %}
+                        <li class="text-neon-orange">{{ message }}</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+                {% endif %}
+            {% endwith %}
+        </section>
+    </main>
+
+    <script>
+        // Copy to clipboard functionality
+        function copyToClipboard(elementId) {
+            const text = document.getElementById(elementId).innerText;
+            navigator.clipboard.writeText(text)
+                .then(() => {
+                    // alert('Copied to clipboard!');
+                })
+                .catch(() => {
+                    // alert('Failed to copy text.');
+                });
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="icon" href="{{ url_for('static', filename='favicon.svg') }}" type="image/svg+xml">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body class="pixel-grid">
+    <div class="container mx-auto py-10">
+        <h1 class="text-4xl font-extrabold text-center holographic-text mb-8">Login</h1>
+        <form action="/login" method="post" class="max-w-md mx-auto cyber-border bg-black/50 p-6 rounded-lg">
+            <div class="mb-4">
+                <label for="username" class="block text-sm font-medium text-cyber-purple">Username:</label>
+                <input type="text" name="username" id="username" class="mt-1 p-3 w-full bg-black/30 text-white border border-white/20 rounded-lg" required>
+            </div>
+            <div class="mb-4">
+                <label for="password" class="block text-sm font-medium text-cyber-purple">Password:</label>
+                <input type="password" name="password" id="password" class="mt-1 p-3 w-full bg-black/30 text-white border border-white/20 rounded-lg" required>
+            </div>
+            <button type="submit" class="w-full py-3 bg-cyber-purple/30 hover:bg-cyber-purple/40 text-neon-orange font-mono transition-all rounded-lg">
+                LOGIN >>
+            </button>
+            <div class="text-center mt-4">
+                <a href="/register" class="text-neon-orange hover:text-cyber-purple transition-colors text-sm">Don't have an account? Sign up</a>
+            </div>
+            {% if error %}
+            <div class="bg-red-500/20 text-neon-orange p-4 rounded-md mt-4 animate-pulse">
+                <p>{{ error }}</p>
+            </div>
+            {% endif %}
+        </form>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MultiTools - Phone Number Parser</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="icon" href="{{ url_for('static', filename='favicon.svg') }}" type="image/svg+xml">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body class="pixel-grid">
+    <nav class="sticky top-0 bg-black/80 backdrop-blur-xl border-b border-white/10 z-50">
+        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+            <a href="/" class="text-2xl font-bold holographic-text">MultiTools</a>
+            <div class="flex space-x-6">
+                <a href="/profile" class="hover:text-cyber-purple transition-colors group">
+                    <span class="mr-2">👾</span>
+                    <span class="border-b-2 border-transparent group-hover:border-neon-orange">Profile</span>
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="container mx-auto px-4 py-12">
+        <h1 class="text-5xl font-bold text-center mb-12 holographic-text">
+            Phone Number Parser
+        </h1>
+
+        <form method="post" class="cyber-border bg-black/50 p-8 mb-12 space-y-6 hover:bg-black/60 transition-all">
+            <label for="phone_number" class="block text-cyber-purple font-bold">Enter phone number:</label>
+            <input type="text" id="phone_number" name="phone_number" placeholder="+1 234 567 890" required class="w-full p-3 bg-white/10 border border-white/10 rounded-lg focus:outline-none focus:border-cyber-purple">
+            <button type="submit" class="w-full py-3 bg-cyber-purple/30 hover:bg-cyber-purple/40 text-neon-orange font-mono transition-all">Parse</button>
+        </form>
+
+        {% if error %}
+            <div class="cyber-border bg-black/50 p-6 mb-8 text-neon-orange animate-pulse-fast">
+                <div class="flex items-center space-x-3">
+                    <span class="text-2xl">⚠️</span>
+                    <p class="font-mono">{{ error }}</p>
+                </div>
+            </div>
+        {% else %}
+            <section class="cyber-border bg-black/50 p-8 mb-12 space-y-6 hover:bg-black/60 transition-all">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 font-mono">
+                    <div class="space-y-2">
+                        <p class="text-cyber-purple font-bold">[Country]</p>
+                        <p class="text-xl text-neon-orange">{{ country }}</p>
+                    </div>
+                    <div class="space-y-2">
+                        <p class="text-cyber-purple font-bold">[Country calling code]</p>
+                        <p class="text-xl">{{ country_code }}</p>
+                    </div>
+                    <div class="space-y-2">
+                        <p class="text-cyber-purple font-bold">[Is valid?]</p>
+                        <p class="text-xl text-neon-orange">{{ is_valid }}</p>
+                    </div>
+                    <div class="space-y-2">
+                        <p class="text-cyber-purple font-bold">[Is possible?]</p>
+                        <p class="text-xl">{{ is_possible }}</p>
+                    </div>
+                    <div class="space-y-2">
+                        <p class="text-cyber-purple font-bold">[Type]</p>
+                        <p class="text-xl text-neon-orange">{{ number_type }}</p>
+                    </div>
+                    <div class="space-y-2">
+                        <p class="text-cyber-purple font-bold">[International format]</p>
+                        <p class="text-xl">{{ international_format }}</p>
+                    </div>
+                    <div class="space-y-2">
+                        <p class="text-cyber-purple font-bold">[National format]</p>
+                        <p class="text-xl text-neon-orange">{{ national_format }}</p>
+                    </div>
+                    <div class="space-y-2">
+                        <p class="text-cyber-purple font-bold">[E.164 format]</p>
+                        <p class="text-xl">{{ e164_format }}</p>
+                    </div>
+                    <div class="space-y-2">
+                        <p class="text-cyber-purple font-bold">[RFC3966 format]</p>
+                        <p class="text-xl text-neon-orange">{{ rfc3966_format }}</p>
+                    </div>
+                    <div class="space-y-2">
+                        <p class="text-cyber-purple font-bold">[Carrier]</p>
+                        <p class="text-xl">{{ carrier_name }}</p>
+                    </div>
+                </div>
+            </section>
+        {% endif %}
+    </main>
+</body>
+</html>

@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Docker Cheatsheet - MultiTools</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="icon" href="{{ url_for('static', filename='favicon.svg') }}" type="image/svg+xml">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body class="pixel-grid">
+    <nav class="sticky top-0 bg-black/80 backdrop-blur-xl border-b border-white/10 z-50">
+        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+            <a href="/" class="text-2xl font-bold holographic-text">MultiTools</a>
+            <div class="flex space-x-6">
+                <a href="/profile" class="hover:text-cyber-purple transition-colors group">
+                    <span class="mr-2">👾</span>
+                    <span class="border-b-2 border-transparent group-hover:border-neon-orange">Profile</span>
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="container mx-auto px-4 py-12">
+        <h1 class="text-5xl font-bold text-center mb-12 holographic-text">
+            Docker Cheatsheet
+        </h1>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <!-- Docker Basics Card -->
+            <article class="cyber-border bg-black/50 p-6 hover:bg-black/60 transition-all group">
+                <div class="flex flex-col h-full space-y-4">
+                    <div class="flex items-center space-x-4">
+                        <div class="w-14 h-14 bg-cyber-purple/20 flex items-center justify-center text-2xl">
+                            🐳
+                        </div>
+                        <h3 class="text-xl font-bold">Docker Basics</h3>
+                    </div>
+                    <ul class="text-white/70 flex-grow space-y-2">
+                        <li><code class="text-neon-orange">docker --version</code> - Check Docker version</li>
+                        <li><code class="text-neon-orange">docker info</code> - Display system-wide information</li>
+                        <li><code class="text-neon-orange">docker run &lt;image&gt;</code> - Run a container from an image</li>
+                        <li><code class="text-neon-orange">docker ps</code> - List running containers</li>
+                        <li><code class="text-neon-orange">docker ps -a</code> - List all containers</li>
+                        <li><code class="text-neon-orange">docker stop &lt;container_id&gt;</code> - Stop a running container</li>
+                        <li><code class="text-neon-orange">docker rm &lt;container_id&gt;</code> - Remove a container</li>
+                        <li><code class="text-neon-orange">docker images</code> - List all images</li>
+                        <li><code class="text-neon-orange">docker rmi &lt;image_id&gt;</code> - Remove an image</li>
+                    </ul>
+                </div>
+            </article>
+
+            <!-- Docker Networking Card -->
+            <article class="cyber-border bg-black/50 p-6 hover:bg-black/60 transition-all group">
+                <div class="flex flex-col h-full space-y-4">
+                    <div class="flex items-center space-x-4">
+                        <div class="w-14 h-14 bg-neon-orange/20 flex items-center justify-center text-2xl">
+                            🌐
+                        </div>
+                        <h3 class="text-xl font-bold">Docker Networking</h3>
+                    </div>
+                    <ul class="text-white/70 flex-grow space-y-2">
+                        <li><code class="text-neon-orange">docker network ls</code> - List all networks</li>
+                        <li><code class="text-neon-orange">docker network create &lt;network_name&gt;</code> - Create a new network</li>
+                        <li><code class="text-neon-orange">docker network inspect &lt;network_name&gt;</code> - Inspect a network</li>
+                        <li><code class="text-neon-orange">docker network connect &lt;network_name&gt; &lt;container_id&gt;</code> - Connect a container to a network</li>
+                        <li><code class="text-neon-orange">docker network disconnect &lt;network_name&gt; &lt;container_id&gt;</code> - Disconnect a container from a network</li>
+                    </ul>
+                </div>
+            </article>
+
+            <!-- Docker Volumes Card -->
+            <article class="cyber-border bg-black/50 p-6 hover:bg-black/60 transition-all group">
+                <div class="flex flex-col h-full space-y-4">
+                    <div class="flex items-center space-x-4">
+                        <div class="w-14 h-14 bg-cyber-purple/20 flex items-center justify-center text-2xl">
+                            💾
+                        </div>
+                        <h3 class="text-xl font-bold">Docker Volumes</h3>
+                    </div>
+                    <ul class="text-white/70 flex-grow space-y-2">
+                        <li><code class="text-neon-orange">docker volume ls</code> - List all volumes</li>
+                        <li><code class="text-neon-orange">docker volume create &lt;volume_name&gt;</code> - Create a new volume</li>
+                        <li><code class="text-neon-orange">docker volume inspect &lt;volume_name&gt;</code> - Inspect a volume</li>
+                        <li><code class="text-neon-orange">docker volume rm &lt;volume_name&gt;</code> - Remove a volume</li>
+                    </ul>
+                </div>
+            </article>
+
+            <!-- Docker Compose Card -->
+            <article class="cyber-border bg-black/50 p-6 hover:bg-black/60 transition-all group">
+                <div class="flex flex-col h-full space-y-4">
+                    <div class="flex items-center space-x-4">
+                        <div class="w-14 h-14 bg-neon-orange/20 flex items-center justify-center text-2xl">
+                            🚀
+                        </div>
+                        <h3 class="text-xl font-bold">Docker Compose</h3>
+                    </div>
+                    <ul class="text-white/70 flex-grow space-y-2">
+                        <li><code class="text-neon-orange">docker-compose up</code> - Start containers</li>
+                        <li><code class="text-neon-orange">docker-compose down</code> - Stop and remove containers</li>
+                        <li><code class="text-neon-orange">docker-compose build</code> - Build images</li>
+                        <li><code class="text-neon-orange">docker-compose logs</code> - View logs</li>
+                        <li><code class="text-neon-orange">docker-compose ps</code> - List containers</li>
+                    </ul>
+                </div>
+            </article>
+
+            <!-- Docker Advanced Card -->
+            <article class="cyber-border bg-black/50 p-6 hover:bg-black/60 transition-all group">
+                <div class="flex flex-col h-full space-y-4">
+                    <div class="flex items-center space-x-4">
+                        <div class="w-14 h-14 bg-cyber-purple/20 flex items-center justify-center text-2xl">
+                            ⚙️
+                        </div>
+                        <h3 class="text-xl font-bold">Docker Advanced</h3>
+                    </div>
+                    <ul class="text-white/70 flex-grow space-y-2">
+                        <li><code class="text-neon-orange">docker exec -it &lt;container_id&gt; /bin/bash</code> - Open a bash shell</li>
+                        <li><code class="text-neon-orange">docker logs &lt;container_id&gt;</code> - View logs</li>
+                        <li><code class="text-neon-orange">docker commit &lt;container_id&gt; &lt;image_name&gt;</code> - Create an image from a container</li>
+                        <li><code class="text-neon-orange">docker save -o &lt;file.tar&gt; &lt;image_name&gt;</code> - Save an image to a tar file</li>
+                        <li><code class="text-neon-orange">docker load -i &lt;file.tar&gt;</code> - Load an image from a tar file</li>
+                    </ul>
+                </div>
+            </article>
+        </div>
+    </main>
+</body>
+</html>

@@ -1,0 +1,10 @@
+Flask
+Flask-Bcrypt
+Flask-Session
+pymongo
+requests
+flask-mail
+python-dotenv
+phonenumbers
+ipinfo
+instaloader

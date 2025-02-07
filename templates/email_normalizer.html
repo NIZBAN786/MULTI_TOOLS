@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Email Normalizer</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <style>
+        .holographic-text {
+            background: linear-gradient(45deg, #00ffcc, #ff00ff, #00ffcc);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-size: 200% 200%;
+        }
+        .cyber-border {
+            border: 2px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            box-shadow: 0 0 10px rgba(0, 255, 204, 0.3), 0 0 20px rgba(255, 0, 255, 0.3);
+        }
+
+        .neon-button {
+            background: linear-gradient(45deg, #00ffcc, #ff00ff);
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            font-size: 16px;
+            font-weight: 600;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .neon-button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 15px rgba(0, 255, 204, 0.5), 0 0 25px rgba(255, 0, 255, 0.5);
+        }
+
+        .input-field {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: white;
+            padding: 12px;
+            width: 100%;
+            border-radius: 8px;
+            font-size: 16px;
+            transition: border-color 0.3s ease;
+        }
+
+        .input-field:focus {
+            outline: none;
+            border-color: #00ffcc;
+        }
+
+        textarea.input-field {
+            height: 150px;
+            resize: vertical;
+        }
+
+        .email-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .email-list li {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 10px;
+            margin: 5px 0;
+            border-radius: 8px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+    </style>
+</head>
+
+<body class="pixel-grid">
+    <nav class="sticky top-0 bg-black/80 backdrop-blur-xl border-b border-white/10 z-50">
+        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+            <a href="/" class="text-2xl font-bold holographic-text">MultiTools</a>
+            <div class="flex space-x-6">
+                <a href="/profile" class="hover:text-cyber-purple transition-colors group">
+                    <span class="mr-2">👾</span>
+                    <span class="border-b-2 border-transparent group-hover:border-neon-orange">Profile</span>
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="container mx-auto px-4 py-12">
+        <h1 class="text-5xl font-bold text-center mb-12 holographic-text">
+            Email Normalizer
+        </h1>
+
+        <div class="max-w-2xl mx-auto cyber-border bg-black/50 p-8 hover:bg-black/60 transition-all">
+            <form method="post" action="{{ url_for('email_normalizer') }}" class="space-y-6">
+                <div>
+                    <label for="emails" class="block text-lg font-medium mb-2">Enter Email Addresses (separated by commas, semicolons, spaces, or newlines):</label>
+                    <textarea id="emails" name="emails" rows="5" class="input-field" required></textarea>
+                </div>
+
+                <button type="submit" class="neon-button w-full">
+                    Normalize
+                </button>
+            </form>
+
+            {% if normalized_emails %}
+                <div class="mt-8">
+                    <h2 class="text-3xl font-bold mb-4 holographic-text">Normalized Emails:</h2>
+                    <ul class="email-list emails">
+                        {% for email in normalized_emails %}
+                            <li>{{ email }}</li>
+                        {% endfor %}
+                    </ul>
+
+                    <div class="flex space-x-4 mt-6">
+                        <button onclick="copyEmails()" class="neon-button flex-1">
+                            Copy Emails
+                        </button>
+                        <button onclick="downloadEmails()" class="neon-button flex-1">
+                            Download
+                        </button>
+                    </div>
+                </div>
+            {% endif %}
+        </div>
+    </main>
+
+    <script>
+        function copyEmails() {
+            const emails = document.querySelector('.email-list').innerText;
+            navigator.clipboard.writeText(emails);
+        }
+        function downloadEmails() {
+            const emails = document.querySelector('.email-list').innerText;
+            const blob = new Blob([emails], { type: 'text/plain' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'normalized_emails.txt';
+            a.click();
+            URL.revokeObjectURL(url);
+        }
+    </script>
+</body>
+</html>

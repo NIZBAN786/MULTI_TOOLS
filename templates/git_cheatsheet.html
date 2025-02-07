@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Git Cheatsheet</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="icon" href="{{ url_for('static', filename='favicon.svg') }}" type="image/svg+xml">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body class="pixel-grid">
+    <nav class="sticky top-0 bg-black/80 backdrop-blur-xl border-b border-white/10 z-50">
+        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+            <a href="/" class="text-2xl font-bold holographic-text">Git Cheatsheet</a>
+            <div class="flex space-x-6">
+                <a href="/profile" class="hover:text-cyber-purple transition-colors group">
+                    <span class="mr-2">👾</span>
+                    <span class="border-b-2 border-transparent group-hover:border-neon-orange">Profile</span>
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="container mx-auto px-4 py-12">
+        <h1 class="text-5xl font-bold text-center mb-12 holographic-text">
+            Git Cheatsheet
+        </h1>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <!-- Basic Commands Card -->
+            <article class="cyber-border bg-black/50 p-6 hover:bg-black/60 transition-all group">
+                <div class="flex flex-col h-full space-y-4">
+                    <div class="flex items-center space-x-4">
+                        <div class="w-14 h-14 bg-cyber-purple/20 flex items-center justify-center text-2xl">
+                            🛠️
+                        </div>
+                        <h3 class="text-xl font-bold">Basic Commands</h3>
+                    </div>
+                    <ul class="text-white/70 flex-grow space-y-2">
+                        <li><code class="text-neon-orange">git init</code> - Initialize a new Git repository</li>
+                        <li><code class="text-neon-orange">git clone [url]</code> - Clone a repository</li>
+                        <li><code class="text-neon-orange">git add [file]</code> - Add file to staging area</li>
+                        <li><code class="text-neon-orange">git commit -m "[message]"</code> - Commit changes</li>
+                        <li><code class="text-neon-orange">git status</code> - Check repository status</li>
+                    </ul>
+                </div>
+            </article>
+
+            <!-- Branching & Merging Card -->
+            <article class="cyber-border bg-black/50 p-6 hover:bg-black/60 transition-all group">
+                <div class="flex flex-col h-full space-y-4">
+                    <div class="flex items-center space-x-4">
+                        <div class="w-14 h-14 bg-neon-orange/20 flex items-center justify-center text-2xl">
+                            🌿
+                        </div>
+                        <h3 class="text-xl font-bold">Branching & Merging</h3>
+                    </div>
+                    <ul class="text-white/70 flex-grow space-y-2">
+                        <li><code class="text-neon-orange">git branch</code> - List branches</li>
+                        <li><code class="text-neon-orange">git branch [branch-name]</code> - Create a new branch</li>
+                        <li><code class="text-neon-orange">git checkout [branch-name]</code> - Switch to a branch</li>
+                        <li><code class="text-neon-orange">git merge [branch]</code> - Merge a branch into current branch</li>
+                        <li><code class="text-neon-orange">git rebase [branch]</code> - Rebase current branch onto another branch</li>
+                    </ul>
+                </div>
+            </article>
+
+            <!-- Remote Repositories Card -->
+            <article class="cyber-border bg-black/50 p-6 hover:bg-black/60 transition-all group">
+                <div class="flex flex-col h-full space-y-4">
+                    <div class="flex items-center space-x-4">
+                        <div class="w-14 h-14 bg-cyber-purple/20 flex items-center justify-center text-2xl">
+                            🌐
+                        </div>
+                        <h3 class="text-xl font-bold">Remote Repositories</h3>
+                    </div>
+                    <ul class="text-white/70 flex-grow space-y-2">
+                        <li><code class="text-neon-orange">git remote add [name] [url]</code> - Add a remote repository</li>
+                        <li><code class="text-neon-orange">git fetch [remote]</code> - Fetch changes from remote</li>
+                        <li><code class="text-neon-orange">git pull [remote] [branch]</code> - Pull changes from remote</li>
+                        <li><code class="text-neon-orange">git push [remote] [branch]</code> - Push changes to remote</li>
+                        <li><code class="text-neon-orange">git remote -v</code> - List remote repositories</li>
+                    </ul>
+                </div>
+            </article>
+
+            <!-- Undoing Changes Card -->
+            <article class="cyber-border bg-black/50 p-6 hover:bg-black/60 transition-all group">
+                <div class="flex flex-col h-full space-y-4">
+                    <div class="flex items-center space-x-4">
+                        <div class="w-14 h-14 bg-neon-orange/20 flex items-center justify-center text-2xl">
+                            ⏪
+                        </div>
+                        <h3 class="text-xl font-bold">Undoing Changes</h3>
+                    </div>
+                    <ul class="text-white/70 flex-grow space-y-2">
+                        <li><code class="text-neon-orange">git reset [file]</code> - Unstage a file</li>
+                        <li><code class="text-neon-orange">git reset --hard</code> - Reset to last commit</li>
+                        <li><code class="text-neon-orange">git revert [commit]</code> - Revert a commit</li>
+                        <li><code class="text-neon-orange">git checkout -- [file]</code> - Discard changes in working directory</li>
+                        <li><code class="text-neon-orange">git clean -fd</code> - Remove untracked files</li>
+                    </ul>
+                </div>
+            </article>
+
+            <!-- Log & History Card -->
+            <article class="cyber-border bg-black/50 p-6 hover:bg-black/60 transition-all group">
+                <div class="flex flex-col h-full space-y-4">
+                    <div class="flex items-center space-x-4">
+                        <div class="w-14 h-14 bg-cyber-purple/20 flex items-center justify-center text-2xl">
+                            📜
+                        </div>
+                        <h3 class="text-xl font-bold">Log & History</h3>
+                    </div>
+                    <ul class="text-white/70 flex-grow space-y-2">
+                        <li><code class="text-neon-orange">git log</code> - View commit history</li>
+                        <li><code class="text-neon-orange">git log --oneline</code> - Compact commit history</li>
+                        <li><code class="text-neon-orange">git log --graph</code> - View commit history with graph</li>
+                        <li><code class="text-neon-orange">git diff [commit1] [commit2]</code> - Diff between two commits</li>
+                        <li><code class="text-neon-orange">git show [commit]</code> - Show changes in a commit</li>
+                    </ul>
+                </div>
+            </article>
+
+            <!-- Stashing Card -->
+            <article class="cyber-border bg-black/50 p-6 hover:bg-black/60 transition-all group">
+                <div class="flex flex-col h-full space-y-4">
+                    <div class="flex items-center space-x-4">
+                        <div class="w-14 h-14 bg-neon-orange/20 flex items-center justify-center text-2xl">
+                            📦
+                        </div>
+                        <h3 class="text-xl font-bold">Stashing</h3>
+                    </div>
+                    <ul class="text-white/70 flex-grow space-y-2">
+                        <li><code class="text-neon-orange">git stash</code> - Stash changes</li>
+                        <li><code class="text-neon-orange">git stash list</code> - List stashes</li>
+                        <li><code class="text-neon-orange">git stash apply</code> - Apply last stash</li>
+                        <li><code class="text-neon-orange">git stash drop</code> - Delete last stash</li>
+                        <li><code class="text-neon-orange">git stash pop</code> - Apply and delete last stash</li>
+                    </ul>
+                </div>
+            </article>
+        </div>
+    </main>
+</body>
+</html>

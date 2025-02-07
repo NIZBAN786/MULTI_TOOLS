@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Regex Cheatsheet - MultiTools</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="icon" href="{{ url_for('static', filename='favicon.svg') }}" type="image/svg+xml">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body class="pixel-grid">
+    <nav class="sticky top-0 bg-black/80 backdrop-blur-xl border-b border-white/10 z-50">
+        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+            <a href="/" class="text-2xl font-bold holographic-text">MultiTools</a>
+            <div class="flex space-x-6">
+                <a href="/profile" class="hover:text-cyber-purple transition-colors group">
+                    <span class="mr-2">👾</span>
+                    <span class="border-b-2 border-transparent group-hover:border-neon-orange">Profile</span>
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="container mx-auto px-4 py-12">
+        <h1 class="text-5xl font-bold text-center mb-12 holographic-text">
+            Regex Cheatsheet
+        </h1>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <!-- Normal Characters Card -->
+            <article class="cyber-border bg-black/50 p-6 hover:bg-black/60 transition-all group">
+                <div class="flex flex-col h-full space-y-4">
+                    <div class="flex items-center space-x-4">
+                        <div class="w-14 h-14 bg-cyber-purple/20 flex items-center justify-center text-2xl">
+                            🔤
+                        </div>
+                        <h3 class="text-xl font-bold">Normal Characters</h3>
+                    </div>
+                    <ul class="text-white/70 flex-grow space-y-2">
+                        <li><code class="text-neon-orange">. or [^\n\r]</code> - Any character excluding a newline or carriage return</li>
+                        <li><code class="text-neon-orange">[A-Za-z]</code> - Alphabet</li>
+                        <li><code class="text-neon-orange">[a-z]</code> - Lowercase alphabet</li>
+                        <li><code class="text-neon-orange">[A-Z]</code> - Uppercase alphabet</li>
+                        <li><code class="text-neon-orange">\d or [0-9]</code> - Digit</li>
+                        <li><code class="text-neon-orange">\D or [^0-9]</code> - Non-digit</li>
+                        <li><code class="text-neon-orange">_</code> - Underscore</li>
+                        <li><code class="text-neon-orange">\w or [A-Za-z0-9_]</code> - Alphabet, digit or underscore</li>
+                        <li><code class="text-neon-orange">\W or [^A-Za-z0-9_]</code> - Inverse of \w</li>
+                        <li><code class="text-neon-orange">\S</code> - Inverse of \s</li>
+                    </ul>
+                </div>
+            </article>
+
+            <!-- Whitespace Characters Card -->
+            <article class="cyber-border bg-black/50 p-6 hover:bg-black/60 transition-all group">
+                <div class="flex flex-col h-full space-y-4">
+                    <div class="flex items-center space-x-4">
+                        <div class="w-14 h-14 bg-neon-orange/20 flex items-center justify-center text-2xl">
+                            ␣
+                        </div>
+                        <h3 class="text-xl font-bold">Whitespace Characters</h3>
+                    </div>
+                    <ul class="text-white/70 flex-grow space-y-2">
+                        <li><code class="text-neon-orange">space</code> - Space</li>
+                        <li><code class="text-neon-orange">\t</code> - Tab</li>
+                        <li><code class="text-neon-orange">\n</code> - Newline</li>
+                        <li><code class="text-neon-orange">\r</code> - Carriage return</li>
+                        <li><code class="text-neon-orange">\s</code> - Space, tab, newline or carriage return</li>
+                    </ul>
+                </div>
+            </article>
+
+            <!-- Character Set Card -->
+            <article class="cyber-border bg-black/50 p-6 hover:bg-black/60 transition-all group">
+                <div class="flex flex-col h-full space-y-4">
+                    <div class="flex items-center space-x-4">
+                        <div class="w-14 h-14 bg-cyber-purple/20 flex items-center justify-center text-2xl">
+                            🎲
+                        </div>
+                        <h3 class="text-xl font-bold">Character Set</h3>
+                    </div>
+                    <ul class="text-white/70 flex-grow space-y-2">
+                        <li><code class="text-neon-orange">[xyz]</code> - Either x, y or z</li>
+                        <li><code class="text-neon-orange">[^xyz]</code> - Neither x, y nor z</li>
+                        <li><code class="text-neon-orange">[1-3]</code> - Either 1, 2 or 3</li>
+                        <li><code class="text-neon-orange">[^1-3]</code> - Neither 1, 2 nor 3</li>
+                    </ul>
+                </div>
+            </article>
+
+            <!-- Characters that Require Escaping Card -->
+            <article class="cyber-border bg-black/50 p-6 hover:bg-black/60 transition-all group">
+                <div class="flex flex-col h-full space-y-4">
+                    <div class="flex items-center space-x-4">
+                        <div class="w-14 h-14 bg-neon-orange/20 flex items-center justify-center text-2xl">
+                            ⚡
+                        </div>
+                        <h3 class="text-xl font-bold">Characters that Require Escaping</h3>
+                    </div>
+                    <ul class="text-white/70 flex-grow space-y-2">
+                        <li><code class="text-neon-orange">\.</code> - Period</li>
+                        <li><code class="text-neon-orange">\^</code> - Caret</li>
+                        <li><code class="text-neon-orange">\$</code> - Dollar sign</li>
+                        <li><code class="text-neon-orange">\|</code> - Pipe</li>
+                        <li><code class="text-neon-orange">\\</code> - Backslash</li>
+                        <li><code class="text-neon-orange">\/</code> - Forward slash</li>
+                        <li><code class="text-neon-orange">\(</code> - Opening bracket</li>
+                        <li><code class="text-neon-orange">\)</code> - Closing bracket</li>
+                        <li><code class="text-neon-orange">\[</code> - Opening square bracket</li>
+                        <li><code class="text-neon-orange">\]</code> - Closing square bracket</li>
+                        <li><code class="text-neon-orange">\{</code> - Opening curly bracket</li>
+                        <li><code class="text-neon-orange">\}</code> - Closing curly bracket</li>
+                    </ul>
+                </div>
+            </article>
+
+            <!-- Quantifiers Card -->
+            <article class="cyber-border bg-black/50 p-6 hover:bg-black/60 transition-all group">
+                <div class="flex flex-col h-full space-y-4">
+                    <div class="flex items-center space-x-4">
+                        <div class="w-14 h-14 bg-cyber-purple/20 flex items-center justify-center text-2xl">
+                            🔢
+                        </div>
+                        <h3 class="text-xl font-bold">Quantifiers</h3>
+                    </div>
+                    <ul class="text-white/70 flex-grow space-y-2">
+                        <li><code class="text-neon-orange">{2}</code> - Exactly 2</li>
+                        <li><code class="text-neon-orange">{2,}</code> - At least 2</li>
+                        <li><code class="text-neon-orange">{2,7}</code> - At least 2 but no more than 7</li>
+                        <li><code class="text-neon-orange">*</code> - 0 or more</li>
+                        <li><code class="text-neon-orange">+</code> - 1 or more</li>
+                        <li><code class="text-neon-orange">?</code> - Exactly 0 or 1</li>
+                    </ul>
+                </div>
+            </article>
+
+            <!-- Boundaries Card -->
+            <article class="cyber-border bg-black/50 p-6 hover:bg-black/60 transition-all group">
+                <div class="flex flex-col h-full space-y-4">
+                    <div class="flex items-center space-x-4">
+                        <div class="w-14 h-14 bg-neon-orange/20 flex items-center justify-center text-2xl">
+                            🎯
+                        </div>
+                        <h3 class="text-xl font-bold">Boundaries</h3>
+                    </div>
+                    <ul class="text-white/70 flex-grow space-y-2">
+                        <li><code class="text-neon-orange">^</code> - Start of string</li>
+                        <li><code class="text-neon-orange">$</code> - End of string</li>
+                        <li><code class="text-neon-orange">\b</code> - Word boundary</li>
+                    </ul>
+                </div>
+            </article>
+
+            <!-- Matching Card -->
+            <article class="cyber-border bg-black/50 p-6 hover:bg-black/60 transition-all group">
+                <div class="flex flex-col h-full space-y-4">
+                    <div class="flex items-center space-x-4">
+                        <div class="w-14 h-14 bg-cyber-purple/20 flex items-center justify-center text-2xl">
+                            🎭
+                        </div>
+                        <h3 class="text-xl font-bold">Matching</h3>
+                    </div>
+                    <ul class="text-white/70 flex-grow space-y-2">
+                        <li><code class="text-neon-orange">foo|bar</code> - Match either foo or bar</li>
+                        <li><code class="text-neon-orange">foo(?=bar)</code> - Match foo if it’s before bar</li>
+                        <li><code class="text-neon-orange">foo(?!bar)</code> - Match foo if it’s not before bar</li>
+                        <li><code class="text-neon-orange">(?<=bar)foo</code> - Match foo if it’s after bar</li>
+                        <li><code class="text-neon-orange">(?<!bar)foo</code> - Match foo if it’s not after bar</li>
+                    </ul>
+                </div>
+            </article>
+
+            <!-- Grouping and Capturing Card -->
+            <article class="cyber-border bg-black/50 p-6 hover:bg-black/60 transition-all group">
+                <div class="flex flex-col h-full space-y-4">
+                    <div class="flex items-center space-x-4">
+                        <div class="w-14 h-14 bg-neon-orange/20 flex items-center justify-center text-2xl">
+                            🧩
+                        </div>
+                        <h3 class="text-xl font-bold">Grouping and Capturing</h3>
+                    </div>
+                    <ul class="text-white/70 flex-grow space-y-2">
+                        <li><code class="text-neon-orange">(foo)</code> - Capturing group; match and capture foo</li>
+                        <li><code class="text-neon-orange">(?:foo)</code> - Non-capturing group; match foo but without capturing foo</li>
+                        <li><code class="text-neon-orange">(foo)bar\1</code> - \1 is a backreference to the 1st capturing group; match foobarfoo</li>
+                    </ul>
+                </div>
+            </article>
+        </div>
+    </main>
+</body>
+</html>

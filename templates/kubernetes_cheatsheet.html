@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kubernetes Cheatsheet</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="icon" href="{{ url_for('static', filename='favicon.svg') }}" type="image/svg+xml">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body class="pixel-grid">
+    <nav class="sticky top-0 bg-black/80 backdrop-blur-xl border-b border-white/10 z-50">
+        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+            <a href="/" class="text-2xl font-bold holographic-text">MultiTools</a>
+            <div class="flex space-x-6">
+                <a href="/profile" class="hover:text-cyber-purple transition-colors group">
+                    <span class="mr-2">👾</span>
+                    <span class="border-b-2 border-transparent group-hover:border-neon-orange">Profile</span>
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="container mx-auto px-4 py-12">
+        <h1 class="text-5xl font-bold text-center mb-12 holographic-text">
+            Kubernetes Cheatsheet
+        </h1>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <!-- Basic Commands Card -->
+            <article class="cyber-border bg-black/50 p-6 hover:bg-black/60 transition-all group">
+                <div class="flex flex-col h-full space-y-4">
+                    <div class="flex items-center space-x-4">
+                        <div class="w-14 h-14 bg-cyber-purple/20 flex items-center justify-center text-2xl">
+                            🛠️
+                        </div>
+                        <h3 class="text-xl font-bold">Basic Commands</h3>
+                    </div>
+                    <ul class="text-white/70 flex-grow space-y-2">
+                        <li><code class="text-neon-orange">kubectl get pods</code> - List all pods</li>
+                        <li><code class="text-neon-orange">kubectl describe pod [pod-name]</code> - Describe a pod</li>
+                        <li><code class="text-neon-orange">kubectl create -f [file.yaml]</code> - Create resources from a file</li>
+                        <li><code class="text-neon-orange">kubectl delete -f [file.yaml]</code> - Delete resources from a file</li>
+                        <li><code class="text-neon-orange">kubectl apply -f [file.yaml]</code> - Apply changes to resources</li>
+                    </ul>
+                </div>
+            </article>
+
+            <!-- Pod Management Card -->
+            <article class="cyber-border bg-black/50 p-6 hover:bg-black/60 transition-all group">
+                <div class="flex flex-col h-full space-y-4">
+                    <div class="flex items-center space-x-4">
+                        <div class="w-14 h-14 bg-neon-orange/20 flex items-center justify-center text-2xl">
+                            📦
+                        </div>
+                        <h3 class="text-xl font-bold">Pod Management</h3>
+                    </div>
+                    <ul class="text-white/70 flex-grow space-y-2">
+                        <li><code class="text-neon-orange">kubectl run [pod-name] --image=[image]</code> - Run a pod</li>
+                        <li><code class="text-neon-orange">kubectl delete pod [pod-name]</code> - Delete a pod</li>
+                        <li><code class="text-neon-orange">kubectl logs [pod-name]</code> - View pod logs</li>
+                        <li><code class="text-neon-orange">kubectl exec -it [pod-name] -- /bin/bash</code> - Execute a command in a pod</li>
+                        <li><code class="text-neon-orange">kubectl port-forward [pod-name] [local-port]:[pod-port]</code> - Forward a local port to a pod</li>
+                    </ul>
+                </div>
+            </article>
+
+            <!-- Deployment & Scaling Card -->
+            <article class="cyber-border bg-black/50 p-6 hover:bg-black/60 transition-all group">
+                <div class="flex flex-col h-full space-y-4">
+                    <div class="flex items-center space-x-4">
+                        <div class="w-14 h-14 bg-cyber-purple/20 flex items-center justify-center text-2xl">
+                            📈
+                        </div>
+                        <h3 class="text-xl font-bold">Deployment & Scaling</h3>
+                    </div>
+                    <ul class="text-white/70 flex-grow space-y-2">
+                        <li><code class="text-neon-orange">kubectl create deployment [deployment-name] --image=[image]</code> - Create a deployment</li>
+                        <li><code class="text-neon-orange">kubectl scale deployment [deployment-name] --replicas=[number]</code> - Scale a deployment</li>
+                        <li><code class="text-neon-orange">kubectl rollout status deployment [deployment-name]</code> - Check rollout status</li>
+                        <li><code class="text-neon-orange">kubectl rollout undo deployment [deployment-name]</code> - Rollback a deployment</li>
+                        <li><code class="text-neon-orange">kubectl autoscale deployment [deployment-name] --min=[min-pods] --max=[max-pods] --cpu-percent=[target]</code> - Autoscale a deployment</li>
+                    </ul>
+                </div>
+            </article>
+
+            <!-- Services & Networking Card -->
+            <article class="cyber-border bg-black/50 p-6 hover:bg-black/60 transition-all group">
+                <div class="flex flex-col h-full space-y-4">
+                    <div class="flex items-center space-x-4">
+                        <div class="w-14 h-14 bg-neon-orange/20 flex items-center justify-center text-2xl">
+                            🌐
+                        </div>
+                        <h3 class="text-xl font-bold">Services & Networking</h3>
+                    </div>
+                    <ul class="text-white/70 flex-grow space-y-2">
+                        <li><code class="text-neon-orange">kubectl expose deployment [deployment-name] --type=LoadBalancer --port=[port]</code> - Expose a deployment</li>
+                        <li><code class="text-neon-orange">kubectl get services</code> - List all services</li>
+                        <li><code class="text-neon-orange">kubectl describe service [service-name]</code> - Describe a service</li>
+                        <li><code class="text-neon-orange">kubectl delete service [service-name]</code> - Delete a service</li>
+                        <li><code class="text-neon-orange">kubectl edit service [service-name]</code> - Edit a service</li>
+                    </ul>
+                </div>
+            </article>
+
+            <!-- ConfigMaps & Secrets Card -->
+            <article class="cyber-border bg-black/50 p-6 hover:bg-black/60 transition-all group">
+                <div class="flex flex-col h-full space-y-4">
+                    <div class="flex items-center space-x-4">
+                        <div class="w-14 h-14 bg-cyber-purple/20 flex items-center justify-center text-2xl">
+                            🔒
+                        </div>
+                        <h3 class="text-xl font-bold">ConfigMaps & Secrets</h3>
+                    </div>
+                    <ul class="text-white/70 flex-grow space-y-2">
+                        <li><code class="text-neon-orange">kubectl create configmap [configmap-name] --from-file=[file]</code> - Create a ConfigMap</li>
+                        <li><code class="text-neon-orange">kubectl get configmaps</code> - List all ConfigMaps</li>
+                        <li><code class="text-neon-orange">kubectl describe configmap [configmap-name]</code> - Describe a ConfigMap</li>
+                        <li><code class="text-neon-orange">kubectl create secret generic [secret-name] --from-literal=[key]=[value]</code> - Create a secret</li>
+                        <li><code class="text-neon-orange">kubectl get secrets</code> - List all secrets</li>
+                    </ul>
+                </div>
+            </article>
+
+            <!-- Namespaces & Contexts Card -->
+            <article class="cyber-border bg-black/50 p-6 hover:bg-black/60 transition-all group">
+                <div class="flex flex-col h-full space-y-4">
+                    <div class="flex items-center space-x-4">
+                        <div class="w-14 h-14 bg-neon-orange/20 flex items-center justify-center text-2xl">
+                            📁
+                        </div>
+                        <h3 class="text-xl font-bold">Namespaces & Contexts</h3>
+                    </div>
+                    <ul class="text-white/70 flex-grow space-y-2">
+                        <li><code class="text-neon-orange">kubectl get namespaces</code> - List all namespaces</li>
+                        <li><code class="text-neon-orange">kubectl create namespace [namespace-name]</code> - Create a namespace</li>
+                        <li><code class="text-neon-orange">kubectl config set-context --current --namespace=[namespace-name]</code> - Set the current namespace</li>
+                        <li><code class="text-neon-orange">kubectl config get-contexts</code> - List all contexts</li>
+                        <li><code class="text-neon-orange">kubectl config use-context [context-name]</code> - Switch to a context</li>
+                    </ul>
+                </div>
+            </article>
+        </div>
+    </main>
+</body>
+</html>

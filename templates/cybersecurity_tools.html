@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CyberSecurity Tools - MultiTools</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="icon" href="{{ url_for('static', filename='favicon.svg') }}" type="image/svg+xml">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body class="pixel-grid">
+    <nav class="sticky top-0 bg-black/80 backdrop-blur-xl border-b border-white/10 z-50">
+        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+            <a href="/" class="text-2xl font-bold holographic-text">MultiTools</a>
+            <div class="flex space-x-6">
+                <a href="/profile" class="hover:text-cyber-purple transition-colors group">
+                    <span class="mr-2">👾</span>
+                    <span class="border-b-2 border-transparent group-hover:border-neon-orange">Profile</span>
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="container mx-auto px-4 py-12">
+        <h1 class="text-5xl font-bold text-center mb-12 holographic-text">
+            CyberSecurity Tools
+        </h1>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <article class="cyber-border bg-black/50 p-6 hover:bg-black/60 transition-all group">
+                <div class="flex flex-col h-full space-y-4">
+                    <div class="flex items-center space-x-4">
+                        <div class="w-14 h-14 bg-cyber-purple/20 flex items-center justify-center text-2xl">
+                            🔍
+                        </div>
+                        <h3 class="text-xl font-bold">IP Lookup</h3>
+                    </div>
+                    <p class="text-white/70 flex-grow">Lookup information about an IP address, including location, ISP, and more</p>
+                    <a href="/cybersecurity_tools/ip_lookup" class="mt-4 inline-block w-full text-center py-3 bg-cyber-purple/30 hover:bg-cyber-purple/40 text-neon-orange font-mono transition-all">
+                        EXPLORE >>
+                    </a>
+                </div>
+            </article>
+
+            <article class="cyber-border bg-black/50 p-6 hover:bg-black/60 transition-all group">
+                <div class="flex flex-col h-full space-y-4">
+                    <div class="flex items-center space-x-4">
+                        <div class="w-14 h-14 bg-neon-orange/20 flex items-center justify-center text-2xl">
+                            📞
+                        </div>
+                        <h3 class="text-xl font-bold">Phone Number Parser</h3>
+                    </div>
+                    <p class="text-white/70 flex-grow">Parse and validate phone numbers from different countries</p>
+                    <a href="/cybersecurity_tools/phonenumber_parser" class="mt-4 inline-block w-full text-center py-3 bg-neon-orange/30 hover:bg-neon-orange/40 text-cyber-purple font-mono transition-all">
+                        EXPLORE >>
+                    </a>
+                </div>
+            </article>
+
+            <article class="cyber-border bg-black/50 p-6 hover:bg-black/60 transition-all group">
+                <div class="flex flex-col h-full space-y-4">
+                    <div class="flex items-center space-x-4">
+                        <div class="w-14 h-14 bg-cyber-purple/20 flex items-center justify-center text-2xl">
+                            🕵️
+                        </div>
+                        <h3 class="text-xl font-bold">MAC Address Lookup</h3>
+                    </div>
+                    <p class="text-white/70 flex-grow">Lookup information about a MAC address, including vendor, address, and more</p>
+                    <a href="/cybersecurity_tools/mac_address_lookup" class="mt-4 inline-block w-full text-center py-3 bg-cyber-purple/30 hover:bg-cyber-purple/40 text-neon-orange font-mono transition-all">
+                        EXPLORE >>
+                    </a>
+                </div>
+            </article>
+            <article class="cyber-border bg-black/50 p-6 hover:bg-black/60 transition-all group">
+                <div class="flex flex-col h-full space-y-4">
+                    <div class="flex items-center space-x-4">
+                        <div class="w-14 h-14 bg-cyber-purple/20 flex items-center justify-center text-2xl">
+                            🔐
+                        </div>
+                        <h3 class="text-xl font-bold">Password Strentgh Analyser</h3>
+                    </div>
+                    <p class="text-white/70 flex-grow">Analyse the strength of your password and get suggestions to make it stronger</p>
+                    <a href="/cybersecurity_tools/password_strength" class="mt-4 inline-block w-full text-center py-3 bg-cyber-purple/30 hover:bg-cyber-purple/40 text-neon-orange font-mono transition-all">
+                        EXPLORE >>
+                    </a>
+                </div>
+            </article>
+            <article class="cyber-border bg-black/50 p-6 hover:bg-black/60 transition-all group">
+                <div class="flex flex-col h-full space-y-4">
+                    <div class="flex items-center space-x-4">
+                        <div class="w-14 h-14 bg-cyber-purple/20 flex items-center justify-center text-2xl">
+                            🔒
+                        </div>
+                        <h3 class="text-xl font-bold">Encrypt / Decrypt Text</h3>
+                    </div>
+                    <p class="text-white/70 flex-grow">Encrypt or decrypt text using different algorithms like AES, DES, and more</p>
+                    <a href="/cybersecurity_tools/ecrypt_decrypt_text" class="mt-4 inline-block w-full text-center py-3 bg-cyber-purple/30 hover:bg-cyber-purple/40 text-neon-orange font-mono transition-all">
+                        EXPLORE >>
+                    </a>
+                </div>
+            </article>
+        </div>
+    </main>
+</body>
+</html>

@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Linux Cheatsheet</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="icon" href="{{ url_for('static', filename='favicon.svg') }}" type="image/svg+xml">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body class="pixel-grid">
+    <nav class="sticky top-0 bg-black/80 backdrop-blur-xl border-b border-white/10 z-50">
+        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+            <a href="/" class="text-2xl font-bold holographic-text">MultiTools</a>
+            <div class="flex space-x-6">
+                <a href="/profile" class="hover:text-cyber-purple transition-colors group">
+                    <span class="mr-2">👾</span>
+                    <span class="border-b-2 border-transparent group-hover:border-neon-orange">Profile</span>
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="container mx-auto px-4 py-12">
+        <h1 class="text-5xl font-bold text-center mb-12 holographic-text">
+            Linux Command Cheatsheet
+        </h1>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <!-- File Operations -->
+            <article class="cyber-border bg-black/50 p-6 hover:bg-black/60 transition-all group">
+                <div class="flex flex-col h-full space-y-4">
+                    <div class="flex items-center space-x-4">
+                        <div class="w-14 h-14 bg-cyber-purple/20 flex items-center justify-center text-2xl">
+                            📁
+                        </div>
+                        <h3 class="text-xl font-bold">File Operations</h3>
+                    </div>
+                    <ul class="text-white/70 flex-grow space-y-2">
+                        <li><code class="text-neon-orange">ls</code> - List directory contents</li>
+                        <li><code class="text-neon-orange">cp [src] [dest]</code> - Copy files</li>
+                        <li><code class="text-neon-orange">mv [src] [dest]</code> - Move/rename files</li>
+                        <li><code class="text-neon-orange">rm [file]</code> - Remove files</li>
+                        <li><code class="text-neon-orange">find [path] -name [pattern]</code> - Find files</li>
+                    </ul>
+                </div>
+            </article>
+
+            <!-- System Info -->
+            <article class="cyber-border bg-black/50 p-6 hover:bg-black/60 transition-all group">
+                <div class="flex flex-col h-full space-y-4">
+                    <div class="flex items-center space-x-4">
+                        <div class="w-14 h-14 bg-neon-orange/20 flex items-center justify-center text-2xl">
+                            💻
+                        </div>
+                        <h3 class="text-xl font-bold">System Info</h3>
+                    </div>
+                    <ul class="text-white/70 flex-grow space-y-2">
+                        <li><code class="text-neon-orange">top</code> - Display processes</li>
+                        <li><code class="text-neon-orange">df -h</code> - Disk space</li>
+                        <li><code class="text-neon-orange">free -h</code> - Memory usage</li>
+                        <li><code class="text-neon-orange">uname -a</code> - Kernel info</li>
+                        <li><code class="text-neon-orange">uptime</code> - System uptime</li>
+                    </ul>
+                </div>
+            </article>
+
+            <!-- Process Management -->
+            <article class="cyber-border bg-black/50 p-6 hover:bg-black/60 transition-all group">
+                <div class="flex flex-col h-full space-y-4">
+                    <div class="flex items-center space-x-4">
+                        <div class="w-14 h-14 bg-cyber-purple/20 flex items-center justify-center text-2xl">
+                            🔄
+                        </div>
+                        <h3 class="text-xl font-bold">Process Management</h3>
+                    </div>
+                    <ul class="text-white/70 flex-grow space-y-2">
+                        <li><code class="text-neon-orange">ps aux</code> - List processes</li>
+                        <li><code class="text-neon-orange">kill [pid]</code> - Terminate process</li>
+                        <li><code class="text-neon-orange">kill -9 [pid]</code> - Force kill</li>
+                        <li><code class="text-neon-orange">bg</code> - Send to background</li>
+                        <li><code class="text-neon-orange">fg</code> - Bring to foreground</li>
+                    </ul>
+                </div>
+            </article>
+
+            <!-- Networking -->
+            <article class="cyber-border bg-black/50 p-6 hover:bg-black/60 transition-all group">
+                <div class="flex flex-col h-full space-y-4">
+                    <div class="flex items-center space-x-4">
+                        <div class="w-14 h-14 bg-neon-orange/20 flex items-center justify-center text-2xl">
+                            🌐
+                        </div>
+                        <h3 class="text-xl font-bold">Networking</h3>
+                    </div>
+                    <ul class="text-white/70 flex-grow space-y-2">
+                        <li><code class="text-neon-orange">ifconfig</code> - Network interfaces</li>
+                        <li><code class="text-neon-orange">ping [host]</code> - Test connection</li>
+                        <li><code class="text-neon-orange">netstat -tulpn</code> - Open ports</li>
+                        <li><code class="text-neon-orange">ssh [user@host]</code> - Secure shell</li>
+                        <li><code class="text-neon-orange">scp [file] [user@host:path]</code> - Secure copy</li>
+                    </ul>
+                </div>
+            </article>
+
+            <!-- Permissions -->
+            <article class="cyber-border bg-black/50 p-6 hover:bg-black/60 transition-all group">
+                <div class="flex flex-col h-full space-y-4">
+                    <div class="flex items-center space-x-4">
+                        <div class="w-14 h-14 bg-cyber-purple/20 flex items-center justify-center text-2xl">
+                            🔒
+                        </div>
+                        <h3 class="text-xl font-bold">Permissions</h3>
+                    </div>
+                    <ul class="text-white/70 flex-grow space-y-2">
+                        <li><code class="text-neon-orange">chmod [perms] [file]</code> - Change permissions</li>
+                        <li><code class="text-neon-orange">chown [user:group] [file]</code> - Change ownership</li>
+                        <li><code class="text-neon-orange">umask [mask]</code> - Set default permissions</li>
+                        <li><code class="text-neon-orange">sudo [command]</code> - Execute as root</li>
+                        <li><code class="text-neon-orange">passwd</code> - Change password</li>
+                    </ul>
+                </div>
+            </article>
+
+            <!-- Package Management -->
+            <article class="cyber-border bg-black/50 p-6 hover:bg-black/60 transition-all group">
+                <div class="flex flex-col h-full space-y-4">
+                    <div class="flex items-center space-x-4">
+                        <div class="w-14 h-14 bg-neon-orange/20 flex items-center justify-center text-2xl">
+                            📦
+                        </div>
+                        <h3 class="text-xl font-bold">Package Management</h3>
+                    </div>
+                    <ul class="text-white/70 flex-grow space-y-2">
+                        <li><code class="text-neon-orange">apt install [pkg]</code> - Install package (Debian)</li>
+                        <li><code class="text-neon-orange">yum install [pkg]</code> - Install package (RHEL)</li>
+                        <li><code class="text-neon-orange">pacman -S [pkg]</code> - Install package (Arch)</li>
+                        <li><code class="text-neon-orange">dnf update</code> - Update packages</li>
+                        <li><code class="text-neon-orange">snap install [pkg]</code> - Install snap package</li>
+                    </ul>
+                </div>
+            </article>
+
+            <!-- Text Processing -->
+            <article class="cyber-border bg-black/50 p-6 hover:bg-black/60 transition-all group">
+                <div class="flex flex-col h-full space-y-4">
+                    <div class="flex items-center space-x-4">
+                        <div class="w-14 h-14 bg-cyber-purple/20 flex items-center justify-center text-2xl">
+                            📝
+                        </div>
+                        <h3 class="text-xl font-bold">Text Processing</h3>
+                    </div>
+                    <ul class="text-white/70 flex-grow space-y-2">
+                        <li><code class="text-neon-orange">grep [pattern] [file]</code> - Search text</li>
+                        <li><code class="text-neon-orange">sed 's/find/replace/'</code> - Stream editor</li>
+                        <li><code class="text-neon-orange">awk '{print $1}'</code> - Text processing</li>
+                        <li><code class="text-neon-orange">sort [file]</code> - Sort lines</li>
+                        <li><code class="text-neon-orange">wc -l [file]</code> - Count lines</li>
+                    </ul>
+                </div>
+            </article>
+
+            <!-- Compression -->
+            <article class="cyber-border bg-black/50 p-6 hover:bg-black/60 transition-all group">
+                <div class="flex flex-col h-full space-y-4">
+                    <div class="flex items-center space-x-4">
+                        <div class="w-14 h-14 bg-neon-orange/20 flex items-center justify-center text-2xl">
+                            🗜️
+                        </div>
+                        <h3 class="text-xl font-bold">Compression</h3>
+                    </div>
+                    <ul class="text-white/70 flex-grow space-y-2">
+                        <li><code class="text-neon-orange">tar -czvf [archive.tar.gz] [dir]</code> - Create tarball</li>
+                        <li><code class="text-neon-orange">tar -xzvf [archive.tar.gz]</code> - Extract tarball</li>
+                        <li><code class="text-neon-orange">gzip [file]</code> - Compress file</li>
+                        <li><code class="text-neon-orange">zip [archive.zip] [file]</code> - Create zip</li>
+                        <li><code class="text-neon-orange">unzip [archive.zip]</code> - Extract zip</li>
+                    </ul>
+                </div>
+            </article>
+
+            <!-- User Management -->
+            <article class="cyber-border bg-black/50 p-6 hover:bg-black/60 transition-all group">
+                <div class="flex flex-col h-full space-y-4">
+                    <div class="flex items-center space-x-4">
+                        <div class="w-14 h-14 bg-cyber-purple/20 flex items-center justify-center text-2xl">
+                            👥
+                        </div>
+                        <h3 class="text-xl font-bold">User Management</h3>
+                    </div>
+                    <ul class="text-white/70 flex-grow space-y-2">
+                        <li><code class="text-neon-orange">useradd [user]</code> - Add user</li>
+                        <li><code class="text-neon-orange">usermod [options] [user]</code> - Modify user</li>
+                        <li><code class="text-neon-orange">passwd [user]</code> - Change password</li>
+                        <li><code class="text-neon-orange">groupadd [group]</code> - Add group</li>
+                        <li><code class="text-neon-orange">whoami</code> - Current user</li>
+                    </ul>
+                </div>
+            </article>
+
+            <!-- Search -->
+            <article class="cyber-border bg-black/50 p-6 hover:bg-black/60 transition-all group">
+                <div class="flex flex-col h-full space-y-4">
+                    <div class="flex items-center space-x-4">
+                        <div class="w-14 h-14 bg-neon-orange/20 flex items-center justify-center text-2xl">
+                            🔍
+                        </div>
+                        <h3 class="text-xl font-bold">Search</h3>
+                    </div>
+                    <ul class="text-white/70 flex-grow space-y-2">
+                        <li><code class="text-neon-orange">grep [pattern] [file]</code> - File content search</li>
+                        <li><code class="text-neon-orange">find [path] -name [name]</code> - File name search</li>
+                        <li><code class="text-neon-orange">locate [pattern]</code> - Quick file search</li>
+                        <li><code class="text-neon-orange">whereis [command]</code> - Find binary location</li>
+                        <li><code class="text-neon-orange">which [command]</code> - Show command path</li>
+                    </ul>
+                </div>
+            </article>
+        </div>
+    </main>
+</body>
+</html>

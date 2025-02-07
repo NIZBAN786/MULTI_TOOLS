@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Windows Cheatsheet</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="icon" href="{{ url_for('static', filename='favicon.svg') }}" type="image/svg+xml">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body class="pixel-grid">
+    <nav class="sticky top-0 bg-black/80 backdrop-blur-xl border-b border-white/10 z-50">
+        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+            <a href="/" class="text-2xl font-bold holographic-text">MultiTools</a>
+            <div class="flex space-x-6">
+                <a href="/profile" class="hover:text-cyber-purple transition-colors group">
+                    <span class="mr-2">👾</span>
+                    <span class="border-b-2 border-transparent group-hover:border-neon-orange">Profile</span>
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="container mx-auto px-4 py-12">
+        <h1 class="text-5xl font-bold text-center mb-12 holographic-text">
+            Windows Command Cheatsheet
+        </h1>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <!-- File Management -->
+            <article class="cyber-border bg-black/50 p-6 hover:bg-black/60 transition-all group">
+                <div class="flex flex-col h-full space-y-4">
+                    <div class="flex items-center space-x-4">
+                        <div class="w-14 h-14 bg-cyber-purple/20 flex items-center justify-center text-2xl">
+                            📂
+                        </div>
+                        <h3 class="text-xl font-bold">File Management</h3>
+                    </div>
+                    <ul class="text-white/70 flex-grow space-y-2">
+                        <li><code class="text-neon-orange">dir</code> - List directory contents</li>
+                        <li><code class="text-neon-orange">copy [src] [dest]</code> - Copy files</li>
+                        <li><code class="text-neon-orange">move [src] [dest]</code> - Move files</li>
+                        <li><code class="text-neon-orange">del [file]</code> - Delete files</li>
+                        <li><code class="text-neon-orange">mkdir [dir]</code> - Create directory</li>
+                    </ul>
+                </div>
+            </article>
+
+            <!-- Network Commands -->
+            <article class="cyber-border bg-black/50 p-6 hover:bg-black/60 transition-all group">
+                <div class="flex flex-col h-full space-y-4">
+                    <div class="flex items-center space-x-4">
+                        <div class="w-14 h-14 bg-neon-orange/20 flex items-center justify-center text-2xl">
+                            🌐
+                        </div>
+                        <h3 class="text-xl font-bold">Networking</h3>
+                    </div>
+                    <ul class="text-white/70 flex-grow space-y-2">
+                        <li><code class="text-neon-orange">ipconfig</code> - Network configuration</li>
+                        <li><code class="text-neon-orange">ping [host]</code> - Test connection</li>
+                        <li><code class="text-neon-orange">tracert [host]</code> - Trace route</li>
+                        <li><code class="text-neon-orange">netstat -ano</code> - Network statistics</li>
+                        <li><code class="text-neon-orange">netsh wlan show profiles</code> - WiFi profiles</li>
+                    </ul>
+                </div>
+            </article>
+
+            <!-- System Info -->
+            <article class="cyber-border bg-black/50 p-6 hover:bg-black/60 transition-all group">
+                <div class="flex flex-col h-full space-y-4">
+                    <div class="flex items-center space-x-4">
+                        <div class="w-14 h-14 bg-cyber-purple/20 flex items-center justify-center text-2xl">
+                            💻
+                        </div>
+                        <h3 class="text-xl font-bold">System Info</h3>
+                    </div>
+                    <ul class="text-white/70 flex-grow space-y-2">
+                        <li><code class="text-neon-orange">systeminfo</code> - System configuration</li>
+                        <li><code class="text-neon-orange">tasklist</code> - List running processes</li>
+                        <li><code class="text-neon-orange">ver</code> - OS version</li>
+                        <li><code class="text-neon-orange">driverquery</code> - Installed drivers</li>
+                        <li><code class="text-neon-orange">wmic bios get serialnumber</code> - BIOS serial</li>
+                    </ul>
+                </div>
+            </article>
+
+            <!-- Process Management -->
+            <article class="cyber-border bg-black/50 p-6 hover:bg-black/60 transition-all group">
+                <div class="flex flex-col h-full space-y-4">
+                    <div class="flex items-center space-x-4">
+                        <div class="w-14 h-14 bg-neon-orange/20 flex items-center justify-center text-2xl">
+                            🔄
+                        </div>
+                        <h3 class="text-xl font-bold">Process Management</h3>
+                    </div>
+                    <ul class="text-white/70 flex-grow space-y-2">
+                        <li><code class="text-neon-orange">taskkill /PID [id]</code> - Kill process</li>
+                        <li><code class="text-neon-orange">start [app]</code> - Launch application</li>
+                        <li><code class="text-neon-orange">schtasks</code> - Scheduled tasks</li>
+                        <li><code class="text-neon-orange">wmic process list brief</code> - Process details</li>
+                        <li><code class="text-neon-orange">timeout /t [sec]</code> - Delay command</li>
+                    </ul>
+                </div>
+            </article>
+
+            <!-- Disk Management -->
+            <article class="cyber-border bg-black/50 p-6 hover:bg-black/60 transition-all group">
+                <div class="flex flex-col h-full space-y-4">
+                    <div class="flex items-center space-x-4">
+                        <div class="w-14 h-14 bg-cyber-purple/20 flex items-center justify-center text-2xl">
+                            💽
+                        </div>
+                        <h3 class="text-xl font-bold">Disk Management</h3>
+                    </div>
+                    <ul class="text-white/70 flex-grow space-y-2">
+                        <li><code class="text-neon-orange">chkdsk</code> - Check disk</li>
+                        <li><code class="text-neon-orange">diskpart</code> - Disk partitioning</li>
+                        <li><code class="text-neon-orange">format [drive]</code> - Format drive</li>
+                        <li><code class="text-neon-orange">defrag</code> - Defragment disk</li>
+                        <li><code class="text-neon-orange">fsutil</code> - File system utility</li>
+                    </ul>
+                </div>
+            </article>
+
+            <!-- User Management -->
+            <article class="cyber-border bg-black/50 p-6 hover:bg-black/60 transition-all group">
+                <div class="flex flex-col h-full space-y-4">
+                    <div class="flex items-center space-x-4">
+                        <div class="w-14 h-14 bg-neon-orange/20 flex items-center justify-center text-2xl">
+                            👤
+                        </div>
+                        <h3 class="text-xl font-bold">User Management</h3>
+                    </div>
+                    <ul class="text-white/70 flex-grow space-y-2">
+                        <li><code class="text-neon-orange">net user</code> - User accounts</li>
+                        <li><code class="text-neon-orange">whoami</code> - Current user</li>
+                        <li><code class="text-neon-orange">net localgroup</code> - List user groups</li>
+                        <li><code class="text-neon-orange">runas /user:[user]</code> - Run as different user</li>
+                        <li><code class="text-neon-orange">net accounts</code> - Password policy</li>
+                    </ul>
+                </div>
+            </article>
+
+            <!-- System Utilities -->
+            <article class="cyber-border bg-black/50 p-6 hover:bg-black/60 transition-all group">
+                <div class="flex flex-col h-full space-y-4">
+                    <div class="flex items-center space-x-4">
+                        <div class="w-14 h-14 bg-cyber-purple/20 flex items-center justify-center text-2xl">
+                            ⚙️
+                        </div>
+                        <h3 class="text-xl font-bold">System Utilities</h3>
+                    </div>
+                    <ul class="text-white/70 flex-grow space-y-2">
+                        <li><code class="text-neon-orange">sfc /scannow</code> - System file check</li>
+                        <li><code class="text-neon-orange">shutdown /s</code> - Shutdown system</li>
+                        <li><code class="text-neon-orange">regedit</code> - Registry editor</li>
+                        <li><code class="text-neon-orange">msinfo32</code> - System information</li>
+                        <li><code class="text-neon-orange">control</code> - Open Control Panel</li>
+                    </ul>
+                </div>
+            </article>
+
+            <!-- PowerShell Core -->
+            <article class="cyber-border bg-black/50 p-6 hover:bg-black/60 transition-all group">
+                <div class="flex flex-col h-full space-y-4">
+                    <div class="flex items-center space-x-4">
+                        <div class="w-14 h-14 bg-neon-orange/20 flex items-center justify-center text-2xl">
+                            ⚡
+                        </div>
+                        <h3 class="text-xl font-bold">PowerShell Core</h3>
+                    </div>
+                    <ul class="text-white/70 flex-grow space-y-2">
+                        <li><code class="text-neon-orange">Get-Process</code> - List processes</li>
+                        <li><code class="text-neon-orange">Get-Service</code> - List services</li>
+                        <li><code class="text-neon-orange">Test-NetConnection</code> - Network test</li>
+                        <li><code class="text-neon-orange">Get-ChildItem</code> - List directory</li>
+                        <li><code class="text-neon-orange">Get-Help [cmdlet]</code> - Get help</li>
+                    </ul>
+                </div>
+            </article>
+
+            <!-- Batch Scripting -->
+            <article class="cyber-border bg-black/50 p-6 hover:bg-black/60 transition-all group">
+                <div class="flex flex-col h-full space-y-4">
+                    <div class="flex items-center space-x-4">
+                        <div class="w-14 h-14 bg-cyber-purple/20 flex items-center justify-center text-2xl">
+                            📜
+                        </div>
+                        <h3 class="text-xl font-bold">Batch Scripting</h3>
+                    </div>
+                    <ul class="text-white/70 flex-grow space-y-2">
+                        <li><code class="text-neon-orange">@echo off</code> - Hide command output</li>
+                        <li><code class="text-neon-orange">set /p var=</code> - User input</li>
+                        <li><code class="text-neon-orange">%ERRORLEVEL%</code> - Exit code</li>
+                        <li><code class="text-neon-orange">for /f</code> - Loop processing</li>
+                        <li><code class="text-neon-orange">call [script.bat]</code> - Call another script</li>
+                    </ul>
+                </div>
+            </article>
+        </div>
+    </main>
+</body>
+</html>

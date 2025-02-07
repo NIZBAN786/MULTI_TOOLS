@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Python Cheatsheet - MultiTools</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="icon" href="{{ url_for('static', filename='favicon.svg') }}" type="image/svg+xml">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body class="pixel-grid">
+    <nav class="sticky top-0 bg-black/80 backdrop-blur-xl border-b border-white/10 z-50">
+        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+            <a href="/" class="text-2xl font-bold holographic-text">MultiTools</a>
+            <div class="flex space-x-6">
+                <a href="/profile" class="hover:text-cyber-purple transition-colors group">
+                    <span class="mr-2">👾</span>
+                    <span class="border-b-2 border-transparent group-hover:border-neon-orange">Profile</span>
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="container mx-auto px-4 py-12">
+        <h1 class="text-5xl font-bold text-center mb-12 holographic-text">
+            Python Cheatsheet
+        </h1>
+
+        <!-- Windows Section -->
+        <section class="mb-16">
+            <h2 class="text-3xl font-bold mb-8 cyber-border p-4 text-neon-orange">Windows</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <article class="cyber-border bg-black/50 p-6 hover:bg-black/60 transition-all group">
+                    <div class="flex flex-col h-full space-y-4">
+                        <div class="flex items-center space-x-4">
+                            <div class="w-14 h-14 bg-cyber-purple/20 flex items-center justify-center text-2xl">
+                                🖥️
+                            </div>
+                            <h3 class="text-xl font-bold">Installation</h3>
+                        </div>
+                        <ul class="text-white/70 flex-grow space-y-2">
+                            <li><code class="text-neon-orange">python --version</code> - Check Python version</li>
+                            <li><code class="text-neon-orange">winget install Python.Python.3.11</code> - Install via Microsoft Store</li>
+                            <li><code class="text-neon-orange">py -3.11</code> - Run specific version</li>
+                        </ul>
+                    </div>
+                </article>
+
+                <article class="cyber-border bg-black/50 p-6 hover:bg-black/60 transition-all group">
+                    <div class="flex flex-col h-full space-y-4">
+                        <div class="flex items-center space-x-4">
+                            <div class="w-14 h-14 bg-neon-orange/20 flex items-center justify-center text-2xl">
+                                🐍
+                            </div>
+                            <h3 class="text-xl font-bold">Virtual Environments</h3>
+                        </div>
+                        <ul class="text-white/70 flex-grow space-y-2">
+                            <li><code class="text-neon-orange">python -m venv myenv</code> - Create virtual env</li>
+                            <li><code class="text-neon-orange">myenv\Scripts\activate</code> - Activate env</li>
+                            <li><code class="text-neon-orange">deactivate</code> - Deactivate env</li>
+                        </ul>
+                    </div>
+                </article>
+
+                <article class="cyber-border bg-black/50 p-6 hover:bg-black/60 transition-all group">
+                    <div class="flex flex-col h-full space-y-4">
+                        <div class="flex items-center space-x-4">
+                            <div class="w-14 h-14 bg-cyber-purple/20 flex items-center justify-center text-2xl">
+                                📦
+                            </div>
+                            <h3 class="text-xl font-bold">Package Management</h3>
+                        </div>
+                        <ul class="text-white/70 flex-grow space-y-2">
+                            <li><code class="text-neon-orange">pip install package</code> - Install package</li>
+                            <li><code class="text-neon-orange">pip freeze > requirements.txt</code> - Export dependencies</li>
+                            <li><code class="text-neon-orange">pip install -r requirements.txt</code> - Install from file</li>
+                        </ul>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <!-- Linux Section -->
+        <section class="mb-16">
+            <h2 class="text-3xl font-bold mb-8 cyber-border p-4 text-neon-orange">Linux</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <article class="cyber-border bg-black/50 p-6 hover:bg-black/60 transition-all group">
+                    <div class="flex flex-col h-full space-y-4">
+                        <div class="flex items-center space-x-4">
+                            <div class="w-14 h-14 bg-cyber-purple/20 flex items-center justify-center text-2xl">
+                                🐧
+                            </div>
+                            <h3 class="text-xl font-bold">Installation</h3>
+                        </div>
+                        <ul class="text-white/70 flex-grow space-y-2">
+                            <li><code class="text-neon-orange">sudo apt-get install python3</code> - Install Python</li>
+                            <li><code class="text-neon-orange">python3 --version</code> - Check version</li>
+                            <li><code class="text-neon-orange">sudo apt-get install python3-pip</code> - Install pip</li>
+                        </ul>
+                    </div>
+                </article>
+
+                <article class="cyber-border bg-black/50 p-6 hover:bg-black/60 transition-all group">
+                    <div class="flex flex-col h-full space-y-4">
+                        <div class="flex items-center space-x-4">
+                            <div class="w-14 h-14 bg-neon-orange/20 flex items-center justify-center text-2xl">
+                                🔄
+                            </div>
+                            <h3 class="text-xl font-bold">Execution</h3>
+                        </div>
+                        <ul class="text-white/70 flex-grow space-y-2">
+                            <li><code class="text-neon-orange">python3 script.py</code> - Run script</li>
+                            <li><code class="text-neon-orange">chmod +x script.py</code> - Make executable</li>
+                            <li><code class="text-neon-orange">#!/usr/bin/env python3</code> - Shebang line</li>
+                        </ul>
+                    </div>
+                </article>
+
+                <article class="cyber-border bg-black/50 p-6 hover:bg-black/60 transition-all group">
+                    <div class="flex flex-col h-full space-y-4">
+                        <div class="flex items-center space-x-4">
+                            <div class="w-14 h-14 bg-cyber-purple/20 flex items-center justify-center text-2xl">
+                                🛠️
+                            </div>
+                            <h3 class="text-xl font-bold">Services</h3>
+                        </div>
+                        <ul class="text-white/70 flex-grow space-y-2">
+                            <li><code class="text-neon-orange">nohup python3 app.py &</code> - Run in background</li>
+                            <li><code class="text-neon-orange">systemctl restart myservice</code> - Service management</li>
+                            <li><code class="text-neon-orange">crontab -e</code> - Schedule tasks</li>
+                        </ul>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <!-- macOS Section -->
+        <section class="mb-16">
+            <h2 class="text-3xl font-bold mb-8 cyber-border p-4 text-neon-orange">macOS</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <article class="cyber-border bg-black/50 p-6 hover:bg-black/60 transition-all group">
+                    <div class="flex flex-col h-full space-y-4">
+                        <div class="flex items-center space-x-4">
+                            <div class="w-14 h-14 bg-cyber-purple/20 flex items-center justify-center text-2xl">
+                                🍎
+                            </div>
+                            <h3 class="text-xl font-bold">Installation</h3>
+                        </div>
+                        <ul class="text-white/70 flex-grow space-y-2">
+                            <li><code class="text-neon-orange">brew install python@3.11</code> - Via Homebrew</li>
+                            <li><code class="text-neon-orange">python3 --version</code> - Check version</li>
+                            <li><code class="text-neon-orange">xcode-select --install</code> - Developer tools</li>
+                        </ul>
+                    </div>
+                </article>
+
+                <article class="cyber-border bg-black/50 p-6 hover:bg-black/60 transition-all group">
+                    <div class="flex flex-col h-full space-y-4">
+                        <div class="flex items-center space-x-4">
+                            <div class="w-14 h-14 bg-neon-orange/20 flex items-center justify-center text-2xl">
+                                🏗️
+                            </div>
+                            <h3 class="text-xl font-bold">Development</h3>
+                        </div>
+                        <ul class="text-white/70 flex-grow space-y-2">
+                            <li><code class="text-neon-orange">python3 -m venv .venv</code> - Create virtual env</li>
+                            <li><code class="text-neon-orange">source .venv/bin/activate</code> - Activate env</li>
+                            <li><code class="text-neon-orange">pyenv install 3.11.0</code> - Multiple versions</li>
+                        </ul>
+                    </div>
+                </article>
+
+                <article class="cyber-border bg-black/50 p-6 hover:bg-black/60 transition-all group">
+                    <div class="flex flex-col h-full space-y-4">
+                        <div class="flex items-center space-x-4">
+                            <div class="w-14 h-14 bg-cyber-purple/20 flex items-center justify-center text-2xl">
+                                🚀
+                            </div>
+                            <h3 class="text-xl font-bold">Deployment</h3>
+                        </div>
+                        <ul class="text-white/70 flex-grow space-y-2">
+                            <li><code class="text-neon-orange">python3 -m build</code> - Create package</li>
+                            <li><code class="text-neon-orange">launchctl load ~/Library/LaunchAgents/</code> - Background services</li>
+                            <li><code class="text-neon-orange">codesign --deep --force</code> - App signing</li>
+                        </ul>
+                    </div>
+                </article>
+            </div>
+        </section>
+    </main>
+</body>
+</html>

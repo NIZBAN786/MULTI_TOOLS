@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JSON ↔ CSV Converter - MultiTools</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="icon" href="{{ url_for('static', filename='favicon.svg') }}" type="image/svg+xml">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body class="pixel-grid">
+    <nav class="sticky top-0 bg-black/80 backdrop-blur-xl border-b border-white/10 z-50">
+        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+            <a href="/" class="text-2xl font-bold holographic-text">MultiTools</a>
+        </div>
+    </nav>
+
+    <main class="container mx-auto px-4 py-12 max-w-6xl">
+        <h1 class="text-4xl font-bold mb-8 holographic-text text-center">
+            JSON ↔ CSV Converter
+        </h1>
+
+        <div class="grid md:grid-cols-2 gap-6">
+            <!-- Left Column - JSON to CSV -->
+            <div class="space-y-6">
+                <div class="cyber-border bg-black/50 p-6 h-full">
+                    <h2 class="text-2xl font-mono text-neon-orange mb-6">JSON → CSV</h2>
+                    <form method="post">
+                        <div class="space-y-4">
+                            <div>
+                                <label for="json_data" class="block text-sm mb-2 font-mono text-cyber-purple">JSON Input</label>
+                                <textarea 
+                                    id="json_data" 
+                                    name="json_data" 
+                                    rows="12" 
+                                    class="w-full bg-black/30 border border-white/10 p-4 font-mono text-sm focus:outline-none focus:border-cyber-purple/50 resize-none"
+                                    placeholder='{"example": "value"}'></textarea>
+                            </div>
+                            <button 
+                                type="submit" 
+                                class="w-full py-2 bg-cyber-purple/30 hover:bg-cyber-purple/40 text-neon-orange font-mono transition-all border border-cyber-purple/50 hover:border-cyber-purple/80"
+                                name="convert_to"
+                                value="csv">
+                                CONVERT TO CSV >>
+                            </button>
+                        </div>
+                    </form>
+                </div>
+
+                {% if csv_data %}
+                <div class="cyber-border bg-black/50 p-6">
+                    <div class="flex justify-between items-center mb-4">
+                        <h3 class="text-lg font-mono text-neon-orange">CSV Output</h3>
+                    </div>
+                    <pre id="csv_output" class="bg-black/30 p-4 overflow-x-auto text-sm font-mono">{{ csv_data }}</pre>
+                </div>
+                {% endif %}
+            </div>
+
+            <!-- Right Column - CSV to JSON -->
+            <div class="space-y-6">
+                <div class="cyber-border bg-black/50 p-6 h-full">
+                    <h2 class="text-2xl font-mono text-neon-orange mb-6">CSV → JSON</h2>
+                    <form method="post">
+                        <div class="space-y-4">
+                            <div>
+                                <label for="csv_data" class="block text-sm mb-2 font-mono text-cyber-purple">CSV Input</label>
+                                <textarea 
+                                    id="csv_data" 
+                                    name="csv_data" 
+                                    rows="12" 
+                                    class="w-full bg-black/30 border border-white/10 p-4 font-mono text-sm focus:outline-none focus:border-cyber-purple/50 resize-none"
+                                    placeholder='column1,column2\nvalue1,value2'></textarea>
+                            </div>
+                            <button 
+                                type="submit" 
+                                class="w-full py-2 bg-cyber-purple/30 hover:bg-cyber-purple/40 text-neon-orange font-mono transition-all border border-cyber-purple/50 hover:border-cyber-purple/80"
+                                name="convert_to"
+                                value="json">
+                                CONVERT TO JSON >>
+                            </button>
+                        </div>
+                    </form>
+                </div>
+
+                {% if json_data %}
+                <div class="cyber-border bg-black/50 p-6">
+                    <div class="flex justify-between items-center mb-4">
+                        <h3 class="text-lg font-mono text-neon-orange">JSON Output</h3>
+                    </div>
+                    <pre id="json_output" class="bg-black/30 p-4 overflow-x-auto text-sm font-mono">{{ json_data }}</pre>
+                </div>
+                {% endif %}
+            </div>
+        </div>
+    </main>
+</body>
+</html>
