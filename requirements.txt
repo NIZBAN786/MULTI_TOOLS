@@ -3,8 +3,14 @@ Flask-Bcrypt
 Flask-Session
 pymongo
 requests
-flask-mail
+re2
+Flask-Mail
 python-dotenv
 phonenumbers
-ipinfo
-instaloader
+qrcode[pil]
+dicttoxml
+xmltodict
+pandas
+pyyaml
+pycryptodome
+markdown
