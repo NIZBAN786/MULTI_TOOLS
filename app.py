@@ -37,6 +37,7 @@ import math
 from Cryptodome.Cipher import AES, DES3
 import hashlib
 import codecs
+import markdown
 
 load_dotenv()
 
@@ -785,5 +786,17 @@ def email_normalizer():
 
 def python_cheatsheet():
     return render_template("python_cheatsheet.html")
+
+@app.route("/general_tools/md_to_html", methods=["GET", "POST"])
+def md_to_html():
+    if request.method == "POST":
+        md_content = request.form.get("md_content", "")
+        if md_content:
+            html_content = markdown.markdown(md_content)
+            return render_template("md_to_html.html", md_content=md_content, html_content=html_content)
+        else:
+            flash("Error: Please enter some Markdown content.")
+    return render_template("md_to_html.html", md_content="", html_content="")
+
 if __name__ == "__main__":
     app.run(port=1100, debug=True)
